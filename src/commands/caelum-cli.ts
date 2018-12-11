@@ -1,21 +1,21 @@
-import { filesystem } from "gluegun/filesystem";
 import chalk from "chalk";
+import { filesystem } from "gluegun/filesystem";
 import { homedir } from "os";
 
-var CAELUM_CONFIG = `${homedir()}/.caelumrc`;
+const CAELUM_CONFIG = `${homedir()}/.caelumrc`;
 
-async function getKey(key: string): Promise<string> {
+async function getKey(key: string, toolbox: any): Promise<string> {
   try {
     return JSON.parse(await filesystem.readAsync(CAELUM_CONFIG))[key];
   } catch (Error) {
-    console.error(chalk.red(`Error in ${CAELUM_CONFIG}`));
+    toolbox.print.error(`Error in ${CAELUM_CONFIG}`);
     process.exit(1);
   }
 }
 
 module.exports = {
   name: "caelum-cli",
-  run: async (toolbox) => {
+  run: async (toolbox: any) => {
     toolbox.print.info("Welcome to Caelum - Terminal powered");
 
     const api = toolbox.http.create({
@@ -28,14 +28,14 @@ module.exports = {
       process.exit(1);
     }
 
-    const apiKey = await getKey("API_KEY");
-    const location = await getKey("hometown");
+    const apiKey = await getKey("API_KEY", toolbox);
+    const location = await getKey("hometown", toolbox);
 
     const spinner = toolbox.print.spin("Fetching data...");
     const { ok, data } = await api.get(`/weather?q=${location}&APPID=${apiKey}`);
 
     spinner.stop();
-    console.log(
+    toolbox.print.info(
       ok ? `${location}: ${data.weather[0].description}` : chalk.red("An error occurred"),
     );
   },

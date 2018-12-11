@@ -8,7 +8,8 @@
   "scripts": {
     "format": "prettier --write src/**/*.{js,json,ts} **/*.{js,json,ts}",
     "pretest": "yarn format",
-    "test": "jest"
+    "test": "jest",
+    "lint": "tslint --project ./tsconfig.json 'src/**/*.{ts,tsx}'"
   },
   "files": [
     "tsconfig.json",
@@ -29,7 +30,10 @@
     "@types/node": "^8.0.47",
     "chalk": "^2.4.1",
     "execa": "^1.0.0",
+    "jest": "^23.6.0",
     "prettier": "^1.7.4",
-    "ts-jest": "^23.10.5"
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.11.0",
+    "tslint-sonarts": "^1.8.0"
   }
 }
