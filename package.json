@@ -2,7 +2,6 @@
   "name": "caelum-cli",
   "version": "0.0.1",
   "description": "caelum-cli",
-  "private": true,
   "bin": {
     "caelum": "bin/caelum-cli"
   },
