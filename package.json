@@ -1,0 +1,36 @@
+{
+  "name": "caelum-cli",
+  "version": "0.0.1",
+  "description": "caelum-cli",
+  "private": true,
+  "bin": {
+    "caelum": "bin/caelum-cli"
+  },
+  "scripts": {
+    "format": "prettier --write src/**/*.{js,json,ts} **/*.{js,json,ts}",
+    "pretest": "yarn format",
+    "test": "jest"
+  },
+  "files": [
+    "tsconfig.json",
+    "LICENSE",
+    "readme.md",
+    "docs",
+    "bin",
+    "src"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "gluegun": "next",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/node": "^8.0.47",
+    "chalk": "^2.4.1",
+    "execa": "^1.0.0",
+    "prettier": "^1.7.4",
+    "ts-jest": "^23.10.5"
+  }
+}
