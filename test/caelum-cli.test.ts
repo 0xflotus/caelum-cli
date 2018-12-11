@@ -5,7 +5,7 @@ test("Should not crash", () => {
   expect(stdout).toMatch(/Caelum/i);
 });
 
-test("info command should not crash", () => {
-  const { stdout } = execa("caelum info");
-  expect(stdout).toMatch(/info command/);
+test("key command should not crash", () => {
+  const { stdout } = execa("caelum key");
+  expect(stdout).toMatch(/[a-f0-9]+/);
 });

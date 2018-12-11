@@ -1,4 +1,4 @@
-const { build } = require("gluegun");
+import { build } from "gluegun";
 
 async function run(argv) {
   const cli = build()
@@ -9,8 +9,7 @@ async function run(argv) {
     .version()
     .create();
 
-  const context = await cli.run(argv);
-  return context;
+  return await cli.run(argv);
 }
 
 module.exports = { run };

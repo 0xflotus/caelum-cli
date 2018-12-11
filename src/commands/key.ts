@@ -2,17 +2,17 @@ import { filesystem } from "gluegun/filesystem";
 import { homedir } from "os";
 
 module.exports = {
-  name: "key",
-  dashed: true,
   alias: ["a"],
+  dashed: true,
   description: "Displays the apiKey",
   hidden: false,
-  run: async toolbox => {
+  name: "key",
+  run: async (toolbox) => {
     const CAELUM_CONFIG = `${homedir()}/.caelumrc`;
 
     const apiKey =
       filesystem.exists(CAELUM_CONFIG) &&
-      JSON.parse(await filesystem.readAsync(CAELUM_CONFIG))["API_KEY"];
+      JSON.parse(await filesystem.readAsync(CAELUM_CONFIG)).API_KEY;
 
     toolbox.print.info(apiKey);
   },
